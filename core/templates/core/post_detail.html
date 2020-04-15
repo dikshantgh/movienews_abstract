@@ -1,0 +1,29 @@
+{% extends '_base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock title %}</title>
+</head>
+<body>
+{% block content %}
+<div class="card mx-auto p-3 w-50 card-text-center bg-dark text-white ">
+  <h5 class="card-header">{{ post.title }}</h5>
+    <div class="card-body">
+        <img src="{{ post.picture.url }}">
+        <hr>
+        <p class="text-secondary">Author : <a href="" >{{ post.author }}</a> | Created at : {{ post.created_at }}</p>
+        <p class="text-secondary">Total views: {{ post.view }} </p>
+        <p class="text-justify">{{ post.body }}</p>
+        <br>
+        <p class="text-secondary">Tags:
+        {% for tag in post.tag.all %}
+            <a class='badge' href="" >{{ tag.name }}</a>
+            {% endfor %}
+        </p>
+
+    </div>
+</div>
+{% endblock content %}
+</body>
+</html>

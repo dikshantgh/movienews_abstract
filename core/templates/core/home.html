@@ -1,0 +1,31 @@
+{% extends '_base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Homepage | {{block.super}} {% endblock title%}</title>
+</head>
+<body>
+{% block content %}
+
+
+<div class="container ">
+    <div class="row">
+        {% for post in post_list %}
+        <div class="col-lg-3 col-md-4 col-sm-1">
+            <div class="card-deck">
+            <div class="card text-light bg-dark">
+                <img class="card-img-top" src="{{ post.picture.url }}" alt="{{ post.title }}">
+                <div class="card-body" >
+                    <a href="{{ post.get_absolute_url }}" class="small text-justify card-title">{{ post.title }}</a>
+                </div>
+            </div>
+                </div>
+        </div>
+{% endfor %}
+</div>
+</div>
+
+{% endblock content %}
+</body>
+</html>

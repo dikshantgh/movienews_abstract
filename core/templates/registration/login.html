@@ -1,0 +1,30 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} Login | {{block.super}} {% endblock title %}</title>
+</head>
+<body>
+{% block content %}
+<div class="card mx-auto p-3 w-50 card-text-center bg-dark text-white ">
+    <h5 class="card-header">Login</h5>
+    <div class="card-body">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissable" role="alert">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+        <form action="" method="POST">
+            <div class="form-group">
+                {% csrf_token %}
+                {{form|crispy}}
+            </div>
+            <button class='btn btn-primary mb-2' type="submit"> Login</button>
+        </form>
+    </div>
+</div>
+{% endblock content %}
+</body>
+</html>

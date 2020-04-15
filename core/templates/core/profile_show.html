@@ -1,0 +1,67 @@
+{% extends '_base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {{ user }} | {{ block.super }} {% endblock title %}</title>
+</head>
+<body>
+{% block content %}
+{% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissable" role="alert">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+
+<a href="{% url 'core:post_create' %}">Create Post</a>
+<table class="table mx-auto p-3 w-50 table-dark">
+    <tr>
+    <td>
+        <div class="col-md-5 px-0">
+            <img class="img-fluid" src="{{ user.avatar.url }}" alt="{{ user.first_name }}">
+        </div>
+    </td>
+    </tr>
+    <tr>
+        <th>Username</th>
+        <td>{{ user.username }}</td>
+    </tr>
+    <tr>
+        <th>About Me</th>
+        <td class="small text-justify">{{ user.bio }}</td>
+    </tr>
+    <tr>
+        <th>Email</th>
+        <td> {{ user.email }}</td>
+    </tr>
+    <tr>
+        <th>First Name</th>
+        <td>{{ user.first_name }}</td>
+    </tr>
+    <tr>
+        <th>Last Name</th>
+        <td>{{ user.last_name }}</td>
+    </tr>
+    <tr>
+        <th>Date of Birth</th>
+        <td>{{ user.dob}}</td>
+    </tr>
+    <tr>
+        <th>Country</th>
+        <td>{{ user.country }}</td>
+    </tr>
+    <tr>
+        <th>Phone Number</th>
+        <td>{{ user.phone_number }}</td>
+    </tr>
+    <tr>
+        <th>Gender</th>
+        <td>{{ user.gender }}</td>
+    </tr>
+
+</table>
+<a href="{% url 'core:profile_update' user.id %}">Edit</a>
+{% endblock content %}
+</body>
+</html>

@@ -1,0 +1,25 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Create Post | {{ block.super }}{% endblock title %}</title>
+</head>
+<body>
+{% block content %}
+<div class="card mx-auto p-3 w-50 card-text-center bg-dark text-white ">
+  <h5 class="card-header">Create New Post</h5>
+    <div class="card-body">
+        <form enctype="multipart/form-data" action="" method="POST">
+            <div class="md-form">
+                {% csrf_token %}
+                {{ form|crispy }}
+            </div>
+            <button class='btn btn-primary mb-2' type="submit" >Signup</button>
+        </form>
+    </div>
+</div>
+{% endblock content %}
+</body>
+</html>
